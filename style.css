@@ -1,0 +1,321 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Playwrite+DE+Grund:wght@100..400&display=swap');
+
+body {
+    background-color: hsl(33, 66%, 68%);
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 20px;
+    font-family: "dancing script", cursive;
+    overflow: hidden;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid hsl(240, 16%, 33%);
+}
+
+body.night-mode .no-notes{
+    background-color: #222;
+    color: #fff;
+    border: 2px dashed #888;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+
+body.night-mode #addNote {
+    background-color: hsl(240, 7%, 85%);
+    color: rgb(26, 24, 24);
+    border: white 1px solid;
+}
+
+#addNote{
+    background-color: hsl(240, 79%, 62%);
+    color: white;
+    border-radius: 5px;
+    padding: 0.75rem 1.5rem;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+#nightMode {
+    display: inline-block;
+    background-color: hsl(258, 43%, 27%);
+    font-size: 1rem;
+    padding: 0.75rem 0.5rem;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    border-radius: 10px;
+}
+#nightMode:hover {
+    transition: 0.3s ease-in-out;
+    background-color: hsl(258, 43%, 37%);
+}
+
+
+#addNote:hover {
+    background-color: hsl(240, 9%, 60%);
+}
+
+#nameNote {
+    position: relative;
+}
+
+
+
+h1 {
+    margin-bottom: 1rem;
+    font-size: 3rem;
+    position: relative;
+    width: max-content;
+}
+
+h1::before{
+    content : '📝';
+    position: absolute;
+    left: -60px;
+    bottom: 4px;
+    
+}
+
+
+
+#notes-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 2fr));
+    width: 100%;
+    gap: 1.5rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    justify-content: center;
+}
+
+#notes-container::-webkit-scrollbar {
+    display: none;
+}
+.note{
+    display: grid;
+    background-color: hsl(240, 79%, 62%);
+    color: white;
+    padding: 1rem;
+    border-radius: 5px;
+    word-break: break-word;
+    position: relative;
+}
+
+.note-name {
+    font-size: 3rem;   
+}
+
+
+
+#noteDialog {
+    background-color: rgb(167, 67, 67);
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    overflow: hidden;
+    width:  50%;
+}
+
+body.night-mode #noteDialog h2{
+    color: #fff !important;
+}
+#noteDialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+}
+
+#noteName {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid hsl(240, 79%, 62%);
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+    margin-top: 5px;
+    overflow: hidden;
+}
+
+
+.floating-label {
+    position: absolute;
+    top:  12px;
+    left: 12px;
+    color: hsl(240, 9%, 60%);
+    font-size: 1.2rem;
+    transition: 0.3s;
+    pointer-events: none;
+    overflow: hidden;
+    
+}
+#noteName:focus + #placeholder {
+    left: -100px;
+    overflow: hidden;
+
+}
+
+.contentNote{
+    position: relative;
+}
+
+
+#noteContent {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    border: 1px solid hsl(240, 79%, 62%);
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    margin-top: 5px;
+    resize: none;
+}
+.floating-labelContent{
+    position: absolute;
+    top: 10px;
+    color: hsl(240, 9%, 60%);
+    left: 10px;
+    font-size: 2rem;
+    transition: 0.3s;
+    pointer-events: none;
+    z-index: 10;
+}
+#noteContent:focus + .floating-labelContent,
+#noteContent:not(:placeholder-shown) + .floating-labelContent{
+    left: -100px;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+#saveNote {
+    background-color: hsl(240, 9%, 60%);
+    color: white;
+    border-radius: 5px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+#closeDialogHeader {
+    background-color: indianred;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.edit-button{
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #fff;
+    color: #333;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 28px;
+    height: 28px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    z-index: 10;
+    background-color: hsl(240, 42%, 69%);
+    
+}
+
+.delete-button {
+    position: absolute;
+    top: 8px;
+    margin-left: 11rem;
+    right: 8px;
+    left: 1px;
+    background: #fff;
+    color: #333;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 28px;
+    height: 28px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+    background-color: hsl(240, 42%, 69%);
+}
+
+
+
+h2{
+    font-size: 2rem;
+    color: hsl(0, 0%, 2%);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.no-notes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    width: 200px;
+    background-color: hsl(33, 66%, 68%);
+    position: relative;
+    font-weight: bold;
+    border: 1px dashed hsl(240, 9%, 60%);
+}
+
+#addNewNote {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    font-size: 3rem;
+    padding: 10px;
+    background-color: hsl(240, 9%, 60%);
+    margin-top: 15px;
+    position: relative;
+    z-index: 0;
+    cursor: pointer;
+    
+}
+
+#addNewNote::after{
+    content: '';
+    background: linear-gradient(to right, hsl(240, 79%, 62%), hsl(240, 42%, 69%));
+    height: 100%;
+    width: 0;
+    border-radius: 2px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    transition: 150ms ease-in-out;
+
+}
+
+#addNewNote:hover::after {
+    width: 100%;
+}
+#addNewNote:hover{
+    color: black;
+}
+#noteName:focus + .floating-label,
+#noteName:not(:placeholder-shown) + .floating-label{
+    left: -100px;
+    opacity: 0;
+    transition: 0.3s;
+}
+

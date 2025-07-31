@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Notiffy</title>
+</head>
+<body>
+
+    <header>
+            <h1>Notify</h1>
+        <div>
+            <button id="addNote">+ Add Note</button>
+            <button id="nightMode">🌙</button>
+        </div>
+    </header>
+
+    <main id="notes-container">
+
+    </main>
+
+
+
+    <dialog id="noteDialog">
+            <div id="dialogContent">
+                <div id="dialogHeader">
+                    <h2 id="noteTitle">Add New Note</h2>
+                </div>
+            </div>
+        
+
+        <form id="noteForm">
+                <div id="nameNote">
+                    <input type="text" id="noteName" placeholder=" " required>
+                    <label class="floating-label" for="noteName">Note Name:</label>
+                </div>
+                <div class="contentNote">
+                    <textarea  id="noteContent" placeholder="" required></textarea>
+                    <label class="floating-labelContent" for="noteContent">Note Content:</label>
+                </div>
+
+
+            <div id="dialog-actions">
+                <button id="saveNote" >Save Note</button>
+                <button id="closeDialogHeader"">x</button>
+            </div>
+        </form>
+    </dialog>
+
+ 
+    <script src="script.js"></script>
+</body>
+</html>
