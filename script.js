@@ -137,10 +137,8 @@ function renderNotes(){
     document.querySelectorAll(`.delete-button`).forEach(btn => {
         btn.addEventListener(`click`, deleteNote.bind(null, btn.getAttribute(`data-index`)))
     });
-
     applyNightMode();
 }
-
 function deleteNote(index){
     notes.splice(index, 1);
     saveNotes();
