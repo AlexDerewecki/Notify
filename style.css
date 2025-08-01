@@ -6,7 +6,11 @@ body {
     margin-right: 200px;
     margin-top: 20px;
     font-family: "dancing script", cursive;
-    overflow: hidden;
+}
+
+body.night-mode {
+    background-color: #1e1e1e;
+    color: #ffffff;
 }
 
 header {
@@ -106,6 +110,12 @@ h1::before{
     position: relative;
 }
 
+body.night-mode .note {
+    background-color: #333;
+    color: #fff;
+}
+
+
 .note-name {
     font-size: 3rem;   
 }
@@ -120,6 +130,9 @@ h1::before{
     z-index: 1000;
     overflow: hidden;
     width:  50%;
+}
+body.night-mode #noteDialog {
+    background-color: #333;
 }
 
 body.night-mode #noteDialog h2{
@@ -177,6 +190,7 @@ body.night-mode #noteDialog h2{
     margin-top: 5px;
     resize: none;
 }
+
 .floating-labelContent{
     position: absolute;
     top: 10px;

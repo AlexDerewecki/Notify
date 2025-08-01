@@ -10,35 +10,6 @@ const noNotesDiv = document.querySelector(`.no-notes`);
 let editIndex = null;
 
 
-nightModeBtn.addEventListener(`click`, () => {
-    document.body.classList.toggle(`night-mode`);
-    if (document.body.classList.contains(`night-mode`)){
-        nightModeBtn.textContent = `☀️`;
-        document.body.style.backgroundColor = "#383535"
-        nightModeBtn.style.backgroundColor   = `orange`;
-        document.body.style.color = `white`;
-        noteDialog.style.backgroundColor = `#423635`;
-        noteDialog.style.color = `white`;
-        document.querySelectorAll(`.note`).forEach(note => {
-            note.style.backgroundColor = `#1e1e1e`;
-            note.style.color = `#ffffff`;
-        });
-    } else if (!document.body.classList.contains(`night-mode`)){
-        nightModeBtn.textContent = `🌙`;
-        nightModeBtn.style.backgroundColor = "";
-        document.body.style.backgroundColor = "";
-        document.body.style.color = "";
-        noteDialog.style.backgroundColor = "";
-        noteDialog.style.color = "";
-
-        document.querySelectorAll(`.note`).forEach(note => {
-            note.style.backgroundColor = "";
-            note.style.color = "";
-        });
-    }
-
-    
-});
 
 addNoteButton.addEventListener(`click`, () => {
     editIndex = null;
@@ -92,8 +63,6 @@ function renderNotes(){
         noteDialog.showModal();
         
     });
-    applyNightMode();
-    return;
 
     }
 
@@ -137,7 +106,6 @@ function renderNotes(){
     document.querySelectorAll(`.delete-button`).forEach(btn => {
         btn.addEventListener(`click`, deleteNote.bind(null, btn.getAttribute(`data-index`)))
     });
-    applyNightMode();
 }
 function deleteNote(index){
     notes.splice(index, 1);
@@ -158,17 +126,9 @@ function loadNotes(){
     }
 }
 
-function applyNightMode(){
-    if (document.body.classList.contains(`night-mode`)){
-        document.body.style.backgroundColor = "black";
-        document.body.style.color = "#ffffff";
-        noteDialog.style.backgroundColor = "#423635";
-        document.querySelectorAll(`.note`).forEach(note => {
-            note.style.backgroundColor = "#1e1e1e";
-            note.style.color = "#ffffff";
-        });
-    }
-}
-
+nightModeBtn.addEventListener(`click`, () => {
+    document.body.classList.toggle(`night-mode`);
+    nightModeBtn.textContent = document.body.classList.contains(`night-mode`) ? `☀️` : `🌙`;
+});
 loadNotes();
 renderNotes();
